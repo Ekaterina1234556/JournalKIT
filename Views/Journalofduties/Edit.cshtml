@@ -1,0 +1,49 @@
+﻿@model JournalKIT.Models.Journalofduty
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Journalofduty</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Dateduty" class="control-label"></label>
+                <input asp-for="Dateduty" class="form-control" />
+                <span asp-validation-for="Dateduty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Groupstudentid" class="control-label"></label>
+                <select asp-for="Groupstudentid" class="form-control" asp-items="ViewBag.Groupstudentid"></select>
+                <span asp-validation-for="Groupstudentid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student1id" class="control-label"></label>
+                <select asp-for="Student1id" class="form-control" asp-items="ViewBag.Student1id"></select>
+                <span asp-validation-for="Student1id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student2id" class="control-label"></label>
+                <select asp-for="Student2id" class="form-control" asp-items="ViewBag.Student2id"></select>
+                <span asp-validation-for="Student2id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

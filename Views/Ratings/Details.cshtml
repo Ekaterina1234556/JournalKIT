@@ -1,0 +1,42 @@
+﻿@model JournalKIT.Rating
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Rating</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sportrating)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sportrating)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sciencerating)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sciencerating)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Societyrating)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Societyrating)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Student)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Student.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
