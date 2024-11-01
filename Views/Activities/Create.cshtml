@@ -1,0 +1,58 @@
+﻿@model JournalKIT.Models.Activity
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Activity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nameactivity" class="control-label"></label>
+                <input asp-for="Nameactivity" class="form-control" />
+                <span asp-validation-for="Nameactivity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datecreate" class="control-label"></label>
+                <input asp-for="Datecreate" class="form-control" />
+                <span asp-validation-for="Datecreate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property" class="control-label"></label>
+                <input asp-for="Property" class="form-control" />
+                <span asp-validation-for="Property" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Oneshot" class="control-label"></label>
+                <input asp-for="Oneshot" class="form-control" />
+                <span asp-validation-for="Oneshot" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Creator" class="control-label"></label>
+                <input asp-for="Creator" class="form-control" />
+                <span asp-validation-for="Creator" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Crreatoristutor" class="control-label"></label>
+                <input asp-for="Crreatoristutor" class="form-control" />
+                <span asp-validation-for="Crreatoristutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
