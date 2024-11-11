@@ -49,8 +49,8 @@ namespace JournalKIT.Controllers
         // GET: Groupstudents/Create
         public IActionResult Create()
         {
-            ViewData["Specialtyid"] = new SelectList(_context.Specialties, "Id", "Id");
-            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Id");
+            ViewData["Specialtyid"] = new SelectList(_context.Specialties, "Id", "Namespecialty");
+            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Nametutor");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace JournalKIT.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Specialtyid"] = new SelectList(_context.Specialties, "Id", "Id", groupstudent.Specialtyid);
-            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Id", groupstudent.Tutorid);
+            ViewData["Specialtyid"] = new SelectList(_context.Specialties, "Id", "Namespecialty", groupstudent.Specialtyid);
+            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Nametutor", groupstudent.Tutorid);
             return View(groupstudent);
         }
 
@@ -85,8 +85,8 @@ namespace JournalKIT.Controllers
             {
                 return NotFound();
             }
-            ViewData["Specialtyid"] = new SelectList(_context.Specialties, "Id", "Id", groupstudent.Specialtyid);
-            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Id", groupstudent.Tutorid);
+            ViewData["Specialtyid"] = new SelectList(_context.Specialties, "Id", "Namespecialty", groupstudent.Specialtyid);
+            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Nametutor", groupstudent.Tutorid);
             return View(groupstudent);
         }
 
@@ -122,8 +122,8 @@ namespace JournalKIT.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Specialtyid"] = new SelectList(_context.Specialties, "Id", "Id", groupstudent.Specialtyid);
-            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Id", groupstudent.Tutorid);
+            ViewData["Specialtyid"] = new SelectList(_context.Specialties, "Id", "Namespecialty", groupstudent.Specialtyid);
+            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Nametutor", groupstudent.Tutorid);
             return View(groupstudent);
         }
 

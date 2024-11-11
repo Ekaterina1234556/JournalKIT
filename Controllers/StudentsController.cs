@@ -47,7 +47,7 @@ namespace JournalKIT.Controllers
         // GET: Students/Create
         public IActionResult Create()
         {
-            ViewData["Groupid"] = new SelectList(_context.Groupstudents, "Id", "Id");
+            ViewData["Groupid"] = new SelectList(_context.Groupstudents, "Id", "Namegroup");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace JournalKIT.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Groupid"] = new SelectList(_context.Groupstudents, "Id", "Id", student.Groupid);
+            ViewData["Groupid"] = new SelectList(_context.Groupstudents, "Id", "Namegroup", student.Groupid);
             return View(student);
         }
 
@@ -81,7 +81,7 @@ namespace JournalKIT.Controllers
             {
                 return NotFound();
             }
-            ViewData["Groupid"] = new SelectList(_context.Groupstudents, "Id", "Id", student.Groupid);
+            ViewData["Groupid"] = new SelectList(_context.Groupstudents, "Id", "Namegroup", student.Groupid);
             return View(student);
         }
 
@@ -117,7 +117,7 @@ namespace JournalKIT.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Groupid"] = new SelectList(_context.Groupstudents, "Id", "Id", student.Groupid);
+            ViewData["Groupid"] = new SelectList(_context.Groupstudents, "Id", "Namegroup", student.Groupid);
             return View(student);
         }
 
