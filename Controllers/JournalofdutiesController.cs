@@ -22,8 +22,37 @@ namespace JournalKIT.Controllers
         // GET: Journalofduties
         public async Task<IActionResult> Index()
         {
-            var kitContext = _context.Journalofduties.Include(j => j.Groupstudent).Include(j => j.Student1).Include(j => j.Student2);
-            return View(await kitContext.ToListAsync());
+            // Get all distinct dates from the Journalofduties table
+            var dates = await _context.Journalofduties.Select(j => j.Dateduty).Distinct().ToListAsync();
+
+            // Get all students from the Student table
+            var students = await _context.Students.ToListAsync();
+
+            // Create a dictionary to hold the data for the table
+            var dutyData = new Dictionary<DateOnly, Dictionary<int, Journalofduty>>();
+
+            // Iterate through each date
+            foreach (var date in dates)
+            {
+                // Get all duties for the current date
+                var dutiesForDate = await _context.Journalofduties
+                    .Where(j => j.Dateduty == date)
+                    .ToListAsync();
+
+                // Create a dictionary for the current date
+                dutyData.Add(date, new Dictionary<int, Journalofduty>());
+
+                // Iterate through each duty for the current date
+                foreach (var duty in dutiesForDate)
+                {
+                    // Add the duty to the dictionary for the current date
+                    dutyData[date].Add(duty.Student1id ?? 0, duty);
+                }
+            }
+
+            // Pass the data to the view
+            return View(new { Dates = dates, Students = students, DutyData = dutyData });
+
         }
 
         // GET: Journalofduties/Details/5

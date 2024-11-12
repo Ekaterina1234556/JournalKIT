@@ -1,53 +1,35 @@
-﻿@model IEnumerable<JournalKIT.Models.Journalofduty>
+﻿@model dynamic
 
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Dateduty)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Groupstudent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student2)
-            </th>
-            <th></th>
+            <th>&nbsp;</th>
+            @foreach (var date in Model.Dates)
+            {
+                <th>@date.ToString("dd.MM.yyyy")</th>
+            }
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dateduty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Groupstudent.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student1.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student2.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>@student.Namestudent</td>
+                @foreach (var date in Model.Dates)
+                {
+                    <td>
+                        @if (Model.DutyData.ContainsKey(date) && Model.DutyData[date].ContainsKey(student.Id))
+                        {
+                            
+                                <b>+</b>
+                           
+                        }
+                    </td>
+                }
+            </tr>
+        }
     </tbody>
 </table>

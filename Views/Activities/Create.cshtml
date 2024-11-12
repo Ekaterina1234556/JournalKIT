@@ -4,10 +4,6 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Activity</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -19,7 +15,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Datecreate" class="control-label"></label>
-                <input asp-for="Datecreate" class="form-control" />
+                <input type="date" asp-for="Datecreate" class="form-control" />
                 <span asp-validation-for="Datecreate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -42,6 +38,15 @@
                 <input asp-for="Crreatoristutor" class="form-control" />
                 <span asp-validation-for="Crreatoristutor" class="text-danger"></span>
             </div>
+            <ul id="tags-list" class="list-group">
+                @foreach (var tag in Model.Tegs)
+                {
+                    <li class="list-group-item">
+                        <input type="checkbox" value="@tag.Id" />
+                        @tag.Nameteg
+                    </li>
+                }
+            </ul>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -53,6 +58,8 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
+    }

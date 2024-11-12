@@ -48,7 +48,7 @@ namespace JournalKIT.Controllers
         // GET: Clubs/Create
         public IActionResult Create()
         {
-            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Id");
+            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Nametutor");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace JournalKIT.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Id", club.Tutorid);
+            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Nametutor", club.Tutorid);
             return View(club);
         }
 
@@ -82,7 +82,7 @@ namespace JournalKIT.Controllers
             {
                 return NotFound();
             }
-            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Id", club.Tutorid);
+            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Nametutor", club.Tutorid);
             return View(club);
         }
 
@@ -118,7 +118,7 @@ namespace JournalKIT.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Id", club.Tutorid);
+            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Nametutor", club.Tutorid);
             return View(club);
         }
 

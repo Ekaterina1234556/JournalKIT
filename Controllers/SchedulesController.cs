@@ -50,10 +50,10 @@ namespace JournalKIT.Controllers
         // GET: Schedules/Create
         public IActionResult Create()
         {
-            ViewData["Groupstudentid"] = new SelectList(_context.Groupstudents, "Id", "Id");
-            ViewData["Lessonsid"] = new SelectList(_context.Lessons, "Id", "Id");
-            ViewData["Timelessonsid"] = new SelectList(_context.Timelessons, "Id", "Id");
-            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Id");
+            ViewData["Groupstudentid"] = new SelectList(_context.Groupstudents, "Id", "Namegroup");
+            ViewData["Lessonsid"] = new SelectList(_context.Lessons, "Id", "Namelessons");
+            ViewData["Timelessonsid"] = new SelectList(_context.Timelessons, "Id", "Startlessons", "Endlessons");
+            ViewData["Tutorid"] = new SelectList(_context.Tutors, "Id", "Nametutor");
             return View();
         }
 
