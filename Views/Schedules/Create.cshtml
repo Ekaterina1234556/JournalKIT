@@ -4,10 +4,6 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Schedule</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -18,7 +14,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Datelessons" class="control-label"></label>
-                <input asp-for="Datelessons" class="form-control" />
+                <input type="date" asp-for="Datelessons" class="form-control" />
                 <span asp-validation-for="Datelessons" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,14 +30,14 @@
                 <select asp-for="Lessonsid" class ="form-control" asp-items="ViewBag.Lessonsid"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Создать" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Вернуться к таблице</a>
 </div>
 
 @section Scripts {

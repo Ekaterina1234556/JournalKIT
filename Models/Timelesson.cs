@@ -9,6 +9,7 @@ public partial class Timelesson
 
     public int? Numberlessons { get; set; }
 
+    
     public TimeOnly? Startlessons { get; set; }
 
     public TimeOnly? Endlessons { get; set; }

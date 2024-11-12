@@ -54,10 +54,17 @@ namespace JournalKIT.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nameactivity,Datecreate,Property,Oneshot,Creator,Crreatoristutor")] Activity activity)
+        public async Task<IActionResult> Create([Bind("Id,Nameactivity,Datecreate,Property,Oneshot,Creator,Crreatoristutor,Tegs")] Activity activity)
         {
             if (ModelState.IsValid)
-            {
+            {              
+                foreach (var tag in activity.Tegs)
+                {
+                    if (tag.Id == 0) 
+                    {
+                        _context.Tegs.Add(tag);
+                    }
+                }
                 _context.Add(activity);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
