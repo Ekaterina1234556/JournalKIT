@@ -33,26 +33,15 @@
                 <input asp-for="Oneshot" class="form-control" />
                 <span asp-validation-for="Oneshot" class="text-danger"></span>
             </div>
+          
+           
             <div class="form-group">
-                <label asp-for="Creator" class="control-label"></label>
-                <input asp-for="Creator" class="form-control" />
-                <span asp-validation-for="Creator" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Crreatoristutor" class="control-label"></label>
-                <input asp-for="Crreatoristutor" class="form-control" />
-                <span asp-validation-for="Crreatoristutor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

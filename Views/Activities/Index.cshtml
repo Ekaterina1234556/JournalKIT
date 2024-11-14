@@ -4,4 +4,41 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Мероприятий пока нет</h2>
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<div class="row">
+    @foreach (var activity in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@activity.Nameactivity</h5>
+                    <p class="card-text">
+                        <strong>@Html.DisplayNameFor(model => model.Datecreate):</strong> @activity.Datecreate.HasValue
+                        <br />
+                        <strong>@Html.DisplayNameFor(model => model.Property):</strong> @activity.Property
+                        <br />
+                        <strong>@Html.DisplayNameFor(model => model.Oneshot):</strong> @activity.Oneshot.HasValue
+                        <br />
+                        <strong>@Html.DisplayNameFor(model => model.Tegs):</strong>
+                        @if (activity.Tegs != null)
+                        {
+                            foreach (var teg in activity.Tegs)
+                            {
+                                @teg.Nameteg
+                                
+                            }
+                        }
+                        else
+                        {
+                            @: Отсутствуют
+                        }
+                    </p> <a asp-action="Details" asp-route-id="@activity?.Id" class="btn btn-primary">Подробнее</a>
+                   
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
